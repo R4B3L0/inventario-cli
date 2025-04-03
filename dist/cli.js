@@ -137,5 +137,5 @@ function removerProduto() {
         console.log("Erro: Produto não encontrado.");
     }
 }
-// Inicia o programa
+// inicia o programa npx ts-node src/cli.ts
 menu();

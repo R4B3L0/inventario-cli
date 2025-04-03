@@ -11,12 +11,12 @@ class Inventario {
         this.produtoId = 1;
     }
     adicionarCategoria(nome, descricao) {
-        // 🔹 Validação: Nome não pode estar vazio
+        //valida que o nome nao pode estar vazio
         if (!nome.trim()) {
             console.log("Erro: O nome da categoria não pode estar vazio.");
             return null;
         }
-        // 🔹 Validação: Nome não pode ser duplicado
+        //valida que nome nao pode ser duplicado
         if (this.categorias.some((cat) => cat.nome.toLowerCase() === nome.toLowerCase())) {
             console.log("Erro: Já existe uma categoria com este nome.");
             return null;
@@ -34,7 +34,7 @@ class Inventario {
             console.log("Erro: Categoria não encontrada.");
             return false;
         }
-        // 🔹 Validação: Não pode remover categoria se houver produtos vinculados
+        // nao pode remover categoria se houver produtos vinculados a ela
         if (this.produtos.some((prod) => prod.categoriaId === id)) {
             console.log("Erro: Não é possível remover a categoria. Existem produtos associados a ela.");
             return false;
@@ -43,27 +43,28 @@ class Inventario {
         return true;
     }
     adicionarProduto(nome, descricao, preco, quantidade, categoriaId) {
-        // 🔹 Validação: Nome não pode estar vazio
+        // valida seo nome esta vazio
         if (!nome.trim()) {
             console.log("Erro: O nome do produto não pode estar vazio.");
             return null;
         }
-        // 🔹 Validação: Preço e quantidade devem ser positivos
+        // valida que o preço deve ser positivo
         if (preco <= 0) {
             console.log("Erro: O preço deve ser um valor positivo.");
             return null;
         }
+        // quantidate tbm
         if (quantidade < 0) {
             console.log("Erro: A quantidade não pode ser negativa.");
             return null;
         }
-        // 🔹 Validação: Categoria deve existir
+        //valida se a categoria ja esxite burro
         const categoriaExiste = this.categorias.some((cat) => cat.id === categoriaId);
         if (!categoriaExiste) {
             console.log("Erro: Categoria não encontrada.");
             return null;
         }
-        // 🔹 Validação: Produto não pode ter nome duplicado dentro da mesma categoria
+        //valida se tem 2 produtos iguais na mesma categoria
         if (this.produtos.some((prod) => prod.nome.toLowerCase() === nome.toLowerCase() &&
             prod.categoriaId === categoriaId)) {
             console.log("Erro: Já existe um produto com este nome nesta categoria.");

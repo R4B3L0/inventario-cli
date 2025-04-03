@@ -11,8 +11,13 @@
   "license": "ISC",
   "dependencies": {
     "@types/node": "^22.14.0",
+    "inquirer": "^12.5.0",
     "readline-sync": "^1.4.10",
+    "reflect-metadata": "^0.2.2",
+    "sqlite3": "^5.1.7",
     "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "typeorm": "^0.3.22",
     "typescript": "^5.8.2"
   },
   "devDependencies": {

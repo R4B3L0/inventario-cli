@@ -33,8 +33,12 @@
     "strictNullChecks": true, 
     // Garante que valores `null` e `undefined` sejam tratados corretamente.
 
-    "strictPropertyInitialization": true 
+    "strictPropertyInitialization": true,
     // Exige que propriedades de classe sejam inicializadas antes do uso.
+
+    "experimentalDecorators": true, 
+
+    "emitDecoratorMetadata": true 
   },
   "include": ["src"], 
   // Define que apenas arquivos dentro da pasta "src" serão compilados.
