@@ -1,0 +1,44 @@
+{
+  "compilerOptions": {
+    "target": "ES2016", 
+    // Define a versão do ECMAScript para a qual o TypeScript será compilado.
+
+    "module": "CommonJS", 
+    // Define o sistema de módulos a ser usado (padrão para Node.js).
+
+    "strict": true, 
+    // Habilita verificações rigorosas para evitar erros comuns.
+
+    "esModuleInterop": true, 
+    // Permite compatibilidade com módulos ES6.
+
+    "skipLibCheck": true, 
+    // Ignora checagem de tipos em arquivos de declaração (acelera a compilação).
+
+    "forceConsistentCasingInFileNames": true, 
+    // Garante que nomes de arquivos sejam usados com o mesmo case (evita problemas no Linux/Mac).
+
+    "rootDir": "./src", 
+    // Define a pasta onde os arquivos TypeScript estão localizados.
+
+    "outDir": "./dist", 
+    // Define a pasta onde os arquivos JavaScript compilados serão gerados.
+
+    "resolveJsonModule": true, 
+    // Permite importar arquivos JSON diretamente.
+
+    "noImplicitAny": true, 
+    // Impede o uso de `any` implícito, forçando tipagem mais segura.
+
+    "strictNullChecks": true, 
+    // Garante que valores `null` e `undefined` sejam tratados corretamente.
+
+    "strictPropertyInitialization": true 
+    // Exige que propriedades de classe sejam inicializadas antes do uso.
+  },
+  "include": ["src"], 
+  // Define que apenas arquivos dentro da pasta "src" serão compilados.
+
+  "exclude": ["node_modules", "dist"] 
+  // Ignora as pastas "node_modules" e "dist" na compilação.
+}
