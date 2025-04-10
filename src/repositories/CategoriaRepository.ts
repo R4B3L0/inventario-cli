@@ -1,12 +1,18 @@
 import { Repository } from "typeorm";
 import { AppDataSource } from "../ormconfig";
 import { Categoria } from "../entities/Categoria";
-
+//endpoint
 export class CategoriaRepository {
     private repo: Repository<Categoria>;
 
     constructor() {
         this.repo = AppDataSource.getRepository(Categoria);
+    }
+
+    async findAllComProdutos(): Promise<Categoria[]> {
+        return this.repo.find({
+            relations: ["produtos"],
+        });
     }
 
     async findAll(): Promise<Categoria[]> {

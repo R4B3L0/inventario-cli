@@ -4,17 +4,20 @@ import { Produto } from "./Produto";
 @Entity()
 export class Categoria {
     @PrimaryGeneratedColumn()
-    id!: number; // Adicionamos "!"
+    id!: number;
 
     @Column()
-    nome!: string; // Adicionamos "!"
+    nome!: string;
 
     @Column()
-    descricao!: string; // Adicionamos "!"
+    descricao!: string;
 
     @Column({ type: "datetime", default: () => "CURRENT_TIMESTAMP" })
-    dataCriacao!: Date; // Adicionamos "!"
+    dataCriacao!: Date;
 
     @OneToMany(() => Produto, produto => produto.categoria)
-    produtos!: Produto[]; // Adicionamos "!"
+    produtos!: Produto[]; 
+
+    @Column({ type: "datetime", default: () => "CURRENT_TIMESTAMP", onUpdate: "CURRENT_TIMESTAMP" })
+    dataAtualizacao!: Date;
 }

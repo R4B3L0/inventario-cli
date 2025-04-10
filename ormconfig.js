@@ -10,5 +10,5 @@ exports.AppDataSource = new typeorm_1.DataSource({
     database: "database.sqlite",
     entities: [Categoria_1.Categoria, Produto_1.Produto],
     synchronize: true,
-    logging: true,
+    logging: false,
 });

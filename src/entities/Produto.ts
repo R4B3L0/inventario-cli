@@ -4,26 +4,26 @@ import { Categoria } from "./Categoria";
 @Entity()
 export class Produto {
     @PrimaryGeneratedColumn()
-    id!: number; // Adicionamos "!"
+    id!: number;
 
     @Column()
-    nome!: string; // Adicionamos "!"
+    nome!: string;
 
     @Column()
-    descricao!: string; // Adicionamos "!"
+    descricao!: string;
 
     @Column("decimal")
-    preco!: number; // Adicionamos "!"
+    preco!: number;
 
     @Column("int")
-    quantidade!: number; // Adicionamos "!"
+    quantidade!: number;
 
-    @ManyToOne(() => Categoria, categoria => categoria.produtos)
-    categoria!: Categoria; // Adicionamos "!"
+    @ManyToOne(() => Categoria, categoria => categoria.produtos, {eager: true})
+    categoria!: Categoria;
 
     @Column({ type: "datetime", default: () => "CURRENT_TIMESTAMP" })
-    dataCriacao!: Date; // Adicionamos "!"
+    dataCriacao!: Date;
 
     @Column({ type: "datetime", default: () => "CURRENT_TIMESTAMP", onUpdate: "CURRENT_TIMESTAMP" })
-    dataAtualizacao!: Date; // Adicionamos "!"
+    dataAtualizacao!: Date;
 }

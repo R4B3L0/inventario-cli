@@ -5,14 +5,13 @@ import { ProdutoCLI } from "./cli/produtoCLI";
 
 async function main() {
     try {
-        // Inicializa a conexão com o banco de dados
         await AppDataSource.initialize();
-        console.log("📦 Banco de dados conectado com sucesso!");
+        console.log(" Banco de dados conectado com sucesso!");
 
         const args = process.argv.slice(2);
 
         if (args.length === 0) {
-            console.log("🚀 Bem-vindo ao Inventário CLI!");
+            console.log(" Bem-vindo ao Inventário CLI!");
             console.log("Use os seguintes comandos:");
             console.log(" - categoria → Gerenciar categorias");
             console.log(" - produto → Gerenciar produtos");

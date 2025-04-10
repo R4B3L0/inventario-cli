@@ -8,9 +8,19 @@ export class CategoriaService {
         this.categoriaRepository = new CategoriaRepository();
     }
 
-    async listarCategorias(): Promise<Categoria[]> {
-        return await this.categoriaRepository.findAll();
+    async listarCategorias(): Promise<any[]> {
+        const categorias = await this.categoriaRepository.findAllComProdutos();
+    
+        return categorias.map(categoria => ({
+            id: categoria.id,
+            nome: categoria.nome,
+            descricao: categoria.descricao,
+            produtos: categoria.produtos?.map(p => p.nome).join(", ") || "Nenhum",
+            criadoEm: categoria.dataCriacao,
+            atualizadoEm: categoria.dataAtualizacao,
+        }));
     }
+    
 
     async buscarCategoriaPorId(id: number): Promise<Categoria | null> {
         return await this.categoriaRepository.findById(id);

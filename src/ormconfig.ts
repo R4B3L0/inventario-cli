@@ -10,8 +10,8 @@ export const AppDataSource = new DataSource({
   entities: [
     Categoria,
     Produto,
-    path.join(__dirname, "entities", "*.{ts,js}"), // Garante que TypeORM encontre os arquivos compilados
+    path.join(__dirname, "entities", "*.{ts,js}"),
   ],
   synchronize: true,
-  logging: true,
+  logging: false,
 });

@@ -1,6 +1,7 @@
 import inquirer from "inquirer";
 import { CategoriaService } from "../services/CategoriaService";
 import { Categoria } from "../entities/Categoria";
+import Table from "cli-table3";
 
 export class CategoriaCLI {
     static async menu() {

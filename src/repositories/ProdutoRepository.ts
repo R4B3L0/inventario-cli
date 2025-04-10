@@ -9,6 +9,12 @@ export class ProdutoRepository {
         this.repo = AppDataSource.getRepository(Produto);
     }
 
+    async findAllComCategoria(): Promise<Produto[]> {
+        return this.repo.find({
+            relations: ["categoria"],
+        });
+    }
+
     async findAll(): Promise<Produto[]> {
         return await this.repo.find({ relations: ["categoria"] });
     }
