@@ -27,3 +27,8 @@ uc23200293
 
 Brenno Josue Rabelo Bertunes
 uc22100985
+
+Breno Mattos Vilela
+UC23200342
+
+Daniel Franca
