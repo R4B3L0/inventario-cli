@@ -1,36 +1,34 @@
 import "reflect-metadata";
 import { AppDataSource } from "./ormconfig";
-import { CategoriaCLI } from "./cli/categoriaCLI";
-import { ProdutoCLI } from "./cli/produtoCLI";
+import inquirer from "inquirer";
 
-async function main() {
-    try {
-        await AppDataSource.initialize();
-        console.log(" Banco de dados conectado com sucesso!");
+AppDataSource.initialize()
+  .then(async () => {
+    console.log("Banco de dados conectado com sucesso!");
 
-        const args = process.argv.slice(2);
+    const { opcao } = await inquirer.prompt([
+      {
+        type: "list",
+        name: "opcao",
+        message: "Escolha o que deseja gerenciar:",
+        choices: ["Gerenciar Categorias", "Gerenciar Produtos", "Sair"]
+      }
+    ]);
 
-        if (args.length === 0) {
-            console.log(" Bem-vindo ao Inventário CLI!");
-            console.log("Use os seguintes comandos:");
-            console.log(" - categoria → Gerenciar categorias");
-            console.log(" - produto → Gerenciar produtos");
-            return;
-        }
-
-        switch (args[0]) {
-            case "categoria":
-                await CategoriaCLI.menu();
-                break;
-            case "produto":
-                await ProdutoCLI.menu();
-                break;
-            default:
-                console.log("❌ Comando não reconhecido.");
-        }
-    } catch (error) {
-        console.error("❌ Erro ao conectar no banco:", error);
+    switch (opcao) {
+      case "Gerenciar Categorias":
+        const { CategoriaCLI } = await import("./cli/categoriaCLI");
+        await CategoriaCLI.menu();
+        break;
+      case "Gerenciar Produtos":
+        const { ProdutoCLI } = await import("./cli/produtoCLI");
+        await ProdutoCLI.menu();
+        break;
+      case "Sair":
+        console.log("Até mais!");
+        process.exit(0);
     }
-}
-
-main();
+  })
+  .catch((err) => {
+    console.error("Erro ao conectar no banco:", err);
+  });
